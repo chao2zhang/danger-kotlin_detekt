@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'kotlin_detekt/gem_version.rb'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'danger-kotlin_detekt'
+  spec.name          = 'danger-detekt-instacart'
   spec.version       = KotlinDetekt::VERSION
-  spec.authors       = ['Nicolas Fesquet']
-  spec.email         = ['n.fesquet@betclicgroup.com']
-  spec.description   = %q{A short description of danger-kotlin_detekt.}
-  spec.summary       = %q{A longer description of danger-kotlin_detekt.}
-  spec.homepage      = 'https://github.com/NFesquet/danger-kotlin_detekt'
+  spec.authors       = ['Nicolas Fesquet', 'Chao Zhang']
+  spec.email         = ['n.fesquet@betclicgroup.com', 'zhangchao6865@gmail.com']
+  spec.description   = %q{A short description of danger-kotlin_detekt. This is a forked version to include detekt rule name.}
+  spec.summary       = %q{A longer description of danger-kotlin_detekt.  This is a forked version to include detekt rule name.}
+  spec.homepage      = 'https://github.com/chao2zhang/danger-kotlin_detekt'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
