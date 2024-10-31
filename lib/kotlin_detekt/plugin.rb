@@ -169,7 +169,16 @@ module Danger
           filename = location.get("name").gsub(dir, "")
           next unless !filtering || (target_files.include? filename)
           line = (r.get("line") || "0").to_i
-          send(level == "warning" ? "warn" : "fail", r.get("message"), file: filename, line: line)
+          reason = r.get("message")
+          rule = r.get("source")
+
+          message = "**Issue:** #{reason}".dup
+          message << "\n"
+          message << "**Rule:** #{rule}" 
+          message << "\n"
+          message << "**File:** `#{filename}:#{line}`" # file:line for quick search 
+
+          send(level == "warning" ? "warn" : "fail", message, file: filename, line: line)
         end
       end
     end
