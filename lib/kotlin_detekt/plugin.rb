@@ -180,7 +180,16 @@ module Danger
             added_lines = parse_added_line_numbers(git.diff[filename].patch)
             next unless added_lines.include? line
           end
-          send(level == "warning" ? "warn" : "fail", r.get("message"), file: filename, line: line)
+          reason = r.get("message")
+          rule = r.get("source")
+
+          message = "**Issue:** #{reason}".dup
+          message << "\n"
+          message << "**Rule:** #{rule}" 
+          message << "\n"
+          message << "**File:** `#{filename}:#{line}`" # file:line for quick search 
+
+          send(level == "warning" ? "warn" : "fail", message, file: filename, line: line)
         end
       end
     end
